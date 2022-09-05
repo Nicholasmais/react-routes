@@ -1,0 +1,19 @@
+{
+    "produtos" : [
+        {
+            "codigo" : 1,
+            "descricao" : "Carro",
+            "valor" : 123321
+        },
+        {
+            "codigo" : 2,
+            "descricao" : "Pipa",
+            "valor" : 121
+        },
+        {
+            "codigo" : 3,
+            "descricao" : "Chave",
+            "valor" : 21
+        }
+    ]
+}
