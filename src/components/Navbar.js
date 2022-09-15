@@ -5,11 +5,10 @@ import { Link, useLocation } from 'react-router-dom';
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const pathname = window.location.pathname;
-  const [home, setHome] = useState(true);
   const location = useLocation();
+  const [home, setHome] = useState(true);
   useEffect(() => {
-    setHome(pathname === "/" ? true : false);
+    setHome(location.pathname === "/" ? true : false);
   },[location])
   return (
     <div>
