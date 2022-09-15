@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {Link} from 'react-router-dom';
 import {fetchProducts} from '../services/FetchData.js';
 
 const Home = () => {
-  const [produtos, setProdutos] = useState();
+  const [produtos, setProdutos] = useState([{codigo: '', descricao: '', valor:''}]);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,25 +16,25 @@ const Home = () => {
     <div>
       <header>Home</header> 
       <div>
-      <table style={{width:'100%'}}>
-          <tr>
-            <td>Descrição</td>
-            <td>Valor</td>
-            <td>Código</td>
-          </tr>
-      
-        {produtos.map(produto => (
-        
-        <tr>
-          <td>{produto.descricao}</td>
-          <td>{produto.valor}</td>
-          <td>{produto.codigo}</td>      
-        </tr>
-          
-        ))}
+        <table style={{width:'100%'}}>
+          <thead>
+            <tr>
+              <td>Descrição</td>
+              <td>Valor</td>
+              <td>Código</td>
+            </tr>
+          </thead>
+          <tbody>
+            {produtos.map((produto, i) => (
+            <tr key={`row-${i}`}>
+              <td key={`descricao-${i}`}>{produto.descricao}</td>
+              <td key={`valor-${i}`}>{produto.valor}</td>
+              <td key={`codigo-${i}`}>{produto.codigo}</td>      
+            </tr>
+            ))}
+          </tbody>
         </table>
       </div>
-
     </div>
   )
 }

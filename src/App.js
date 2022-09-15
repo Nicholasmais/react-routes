@@ -9,11 +9,11 @@ function App() {
     <div className="App">
       <header><h1>React Routes</h1></header>
       <BrowserRouter>
-      <Navbar></Navbar>
-        <Routes>
-          <Route path="/" element = {<Home></Home>}></Route>
-          <Route path="/about" element={<About></About>}></Route>
-        </Routes>
+        <Navbar></Navbar>
+          <Routes>
+            <Route path="/" element = {<Home></Home>}></Route>
+            <Route path="/about" element={<About></About>}></Route>
+          </Routes>
       </BrowserRouter>
     </div>
   );
