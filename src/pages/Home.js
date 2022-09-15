@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import {fetchProducts} from '../services/FetchData.js';
+import s from "../styles/home.module.scss";
 
 const Home = () => {
-  const [produtos, setProdutos] = useState([{codigo: '', descricao: '', valor:''}]);
+  const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-    const res = await fetchProducts();
-    setProdutos(res.data);
+    await fetchProducts().then(res => {
+      setProdutos(res.data);
+        }).catch(err =>{
+            setProdutos({codigo: '', descricao: '', valor:''});
+            console.log(err);
+          });
     }
     getData();
   },[]);
@@ -15,25 +20,13 @@ const Home = () => {
   return (
     <div>
       <header>Home</header> 
-      <div>
-        <table style={{width:'100%'}}>
-          <thead>
-            <tr>
-              <td>Descrição</td>
-              <td>Valor</td>
-              <td>Código</td>
-            </tr>
-          </thead>
-          <tbody>
-            {produtos.map((produto, i) => (
-            <tr key={`row-${i}`}>
-              <td key={`descricao-${i}`}>{produto.descricao}</td>
-              <td key={`valor-${i}`}>{produto.valor}</td>
-              <td key={`codigo-${i}`}>{produto.codigo}</td>      
-            </tr>
+      <div className={s.container}>
+            {produtos?.map((produto, i) => (
+            <div key={`product-${produto.codigo}`} className={s.product}>
+              <div key={`descricao-${i}`} className={s.box}><div><b>{produto.descricao}</b></div></div>
+              <div key={`valor-${i}`} className={s.box}>{produto.valor}</div>
+            </div>
             ))}
-          </tbody>
-        </table>
       </div>
     </div>
   )
