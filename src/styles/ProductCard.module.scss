@@ -1,0 +1,37 @@
+.product{
+  height: max(40px, 40vh);
+  display: grid;
+  @media only screen and (max-width:600px) {
+    grid-template-columns: 1fr;
+  }
+  @media only screen and (min-width:600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  outline: 2px solid hsl(0, 30%, 50%);
+  border-radius: 10px;
+  .left{
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    img {
+      max-height: 20vh;
+      max-width: 100%;
+    }
+    & .box{
+      div{
+        max-height: 88px;
+        overflow-y: auto;
+      }
+    }
+  }
+  .right{
+    text-align: left;
+    text-indent: 2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: burlywood;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}

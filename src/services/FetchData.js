@@ -5,4 +5,5 @@ const api = axios.create({
   baseURL: url
 })
 
+export const fetchProductById = async (id) => await api.get(`/products/${id}`);
 export const fetchProducts = async () => await api.get("/products");

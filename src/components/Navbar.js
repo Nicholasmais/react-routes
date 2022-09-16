@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import s from "./Navbar.module.scss";
+import s from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
   const location = useLocation();

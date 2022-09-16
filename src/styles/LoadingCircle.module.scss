@@ -1,0 +1,27 @@
+.circle{
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    width: 6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    padding: .5em;
+    border-top: .5em solid chocolate;
+    animation: animateBorder 2s linear infinite;
+  } 
+
+.span{
+  margin-top: -4.5em;
+}
+
+@keyframes animateBorder {
+  30%{
+    border-color: #91ff00;
+  }
+  60%{
+    border-color: #0066ff;
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

@@ -6,11 +6,11 @@ import Navbar from './components/Navbar';
 import { fetchProducts } from './services/FetchData';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Product from './pages/Product';
 
 function App() {
   const [product, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const getData = async () => {
     await fetchProducts().then(res => {
@@ -31,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element = {!isLoading && <Home products={product}></Home>}></Route>
             <Route path="/about" element={<About></About>}></Route>
+            <Route path="/product/:id" element = {<Product></Product>}></Route>
           </Routes>
       </BrowserRouter>
     </div>
