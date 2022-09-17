@@ -1,0 +1,49 @@
+@import "colors";
+.pagination{
+  width: 80%;
+  margin: 0 auto;
+  
+  .pagesBar{
+    width: max-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding-top: 2em;
+    padding-bottom: 1em;
+
+    & button{
+      background-color: $red3;
+      border: none;
+      padding: 1em 2em 1em 2em;
+      color:#FFF;
+      &:hover{
+        background-color: $red4;
+        color:$red1;
+        cursor: pointer;
+      }
+    }
+
+    & :first-child{
+      border-bottom-left-radius: 50%;
+    }
+
+    & :last-child{
+      border-top-right-radius: 50%;
+    }
+  }
+
+  .container{
+    width: max(240px,100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    @media only screen and (max-width:600px) {
+      grid-template-columns: 1fr;
+    }
+    @media only screen and (min-width:600px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    justify-content: space-evenly;
+  }
+
+}

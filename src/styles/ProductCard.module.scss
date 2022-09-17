@@ -1,3 +1,4 @@
+@import "colors";
 .product{
   height: max(40px, 40vh);
   display: grid;
@@ -7,7 +8,7 @@
   @media only screen and (min-width:600px) {
     grid-template-columns: 1fr 1fr;
   }
-  outline: 2px solid hsl(0, 30%, 50%);
+  outline: 2px solid $red2;
   border-radius: 10px;
   .left{
     a {
@@ -30,7 +31,7 @@
     text-indent: 2rem;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: burlywood;
+    background-color: $red1;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }

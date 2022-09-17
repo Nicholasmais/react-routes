@@ -6,7 +6,7 @@ import BoxMessage from '../components/BoxMessage';
 import LoadingCircle from '../components/LoadingCircle';
 import ProductCard from '../components/ProductCard';
 import { fetchProductById } from '../services/FetchData';
-import s from "../styles/home.module.scss";
+import s from "../styles/Pagination.module.scss";
 
 const Product = () => {
   const { id } = useParams();
@@ -26,20 +26,20 @@ const Product = () => {
   
   return (
     <div>
-      {isLoading &&
-      <LoadingCircle></LoadingCircle>
-      }
+      {isLoading && <LoadingCircle></LoadingCircle>}
       {
       !isLoading && product.length !== 0 &&
-      <div className={s.container} style={{gridTemplateColumns: '1fr'}}>
-        <ProductCard
-          title={product.title}
-          image={product.image}
-          path={`/product/${product.id}`}
-          codigo={product.id}
-          description={product.description}
-          price={product.price}
-        ></ProductCard>
+      <div className={s.pagination}>
+        <div className={s.container} style={{gridTemplateColumns:'1fr',paddingTop:'2em'}}>
+          <ProductCard
+            title={product.title}
+            image={product.image}
+            path={`/product/${product.id}`}
+            codigo={product.id}
+            description={product.description}
+            price={product.price}
+          ></ProductCard>
+        </div>
       </div>
       }
       {
