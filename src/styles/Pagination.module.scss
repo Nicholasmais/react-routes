@@ -17,8 +17,9 @@
       padding: 1em 2em 1em 2em;
       color:#FFF;
       &:hover{
-        background-color: $red4;
-        color:$red1;
+        background-color: $red4 !important;
+        color:$red2 !important;
+        font-weight: bold;
         cursor: pointer;
       }
     }

@@ -3,6 +3,7 @@ import ProductCard from './ProductCard'
 import s from "../styles/Pagination.module.scss";
 import { useState } from 'react'
 import { useEffect } from 'react'
+import LoadingCircle from './LoadingCircle';
 
 const Pagination = ({arr,itens_number}) => {
   const [arrayItens, setArrayItens] = useState([]);
@@ -10,10 +11,19 @@ const Pagination = ({arr,itens_number}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const numberPages = ~~(Object.keys(arr).length / itens_number) + 1;
 
+  const handleClick = (pageNumber) => {
+    for (let i = 0; i < numberPages; i++){
+      document.getElementById(`button_${i}`).style.color = "#FFF";
+      document.getElementById(`button_${i}`).style.backgroundColor = "#774360";
+
+    }
+    document.getElementById(`button_${pageNumber}`).style.color = "#4C3A51";
+    document.getElementById(`button_${pageNumber}`).style.backgroundColor = "#B25068";
+  }
+
   useEffect(()=>{
   for (let i = 0; i < numberPages; i++){
     const new_page = [arr.slice(i*itens_number,itens_number*(i+1))];
-    console.log(new_page);
     setArrayItens(prevItens => [...prevItens, new_page])
     };
   setIsLoading(false);
@@ -23,17 +33,22 @@ const Pagination = ({arr,itens_number}) => {
     <div className={s.pagination}>
       <div className={s.pagesBar}>
             {[...Array(numberPages).keys()].map(pageNumber => (
-              <button key={`pageNumber_${pageNumber+1}`} value={pageNumber}
+              <button key={`pageNumber_${pageNumber+1}`} value={pageNumber} id={`button_${pageNumber}`}
               onClick={(e) => {
                 setIsLoading(true);
+                handleClick(pageNumber);
                 setCurrentPage(e.target.value);
                 setIsLoading(false);
                }}>
-                {pageNumber+1}
+              {pageNumber+1}
               </button>
               ))
             }
+      
       </div>
+
+      {isLoading && <LoadingCircle></LoadingCircle>}
+      
       {!isLoading && arrayItens[currentPage].map((page, i) => (
         <div className={s.container} key={`container_${i}`}>
           {

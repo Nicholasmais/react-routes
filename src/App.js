@@ -34,6 +34,7 @@ function App() {
             <Route path="/" element = {!isLoading && <Home products={product}></Home>}></Route>
             <Route path="/about" element={<About></About>}></Route>
             <Route path="/product/:id" element = {<Product></Product>}></Route>
+            <Route path="*" element={!isLoading && <Home products={product}></Home>}></Route>
           </Routes>
       </BrowserRouter>
     </div>
