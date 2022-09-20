@@ -9,7 +9,8 @@ const Pagination = ({arr,itens_number}) => {
   const [arrayItens, setArrayItens] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
-  const numberPages = ~~(Object.keys(arr).length / itens_number) + 1;
+  const sizeArray = Object.keys(arr).length;
+  const numberPages = sizeArray % itens_number === 0 ? ~~(sizeArray / itens_number) : ~~(sizeArray / itens_number) + 1;
 
   const handleClick = (pageNumber) => {
     for (let i = 0; i < numberPages; i++){
@@ -22,12 +23,14 @@ const Pagination = ({arr,itens_number}) => {
   }
 
   useEffect(()=>{
-  for (let i = 0; i < numberPages; i++){
-    const new_page = [arr.slice(i*itens_number,itens_number*(i+1))];
-    setArrayItens(prevItens => [...prevItens, new_page])
-    };
-  setIsLoading(false);
-  },[])
+    setCurrentPage(0);
+    setArrayItens([]);
+    for (let i = 0; i < numberPages; i++){
+      const new_page = [arr.slice(i*itens_number,itens_number*(i+1))];
+      setArrayItens(prevItens => [...prevItens, new_page])
+      };
+    setIsLoading(false);
+  },[arr, itens_number])
   
   return (
     <div className={s.pagination}>
@@ -44,7 +47,6 @@ const Pagination = ({arr,itens_number}) => {
               </button>
               ))
             }
-      
       </div>
 
       {isLoading && <LoadingCircle></LoadingCircle>}

@@ -23,13 +23,17 @@ const Navbar = () => {
 
   return (  
     <div>
-        <ul className={s.Navbar}>
+        <div className={s.Navbar}>
           {routes.map((val, i) => (
-            <li style={{listStyleType : `${current === val.name ? "circle" : "none"}`}} key={i}>
+            <div className={s.listItem}
+                 style={{listStyleType : `${current === val.name ? "circle" : "none"}`,
+                        borderBottom:`${current === val.name ? "1px solid #000" : ""}`,
+                        paddingBottom:`${current === val.name ? "1px" : ""}`}}
+                key={i}>
               <Link to={val.route}>{val.name}</Link>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
     </div>    
   )
 }

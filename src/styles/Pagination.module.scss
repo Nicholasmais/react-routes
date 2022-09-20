@@ -2,15 +2,14 @@
 .pagination{
   width: 80%;
   margin: 0 auto;
-  
+  padding-bottom: 2em;
   .pagesBar{
     width: max-content;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    padding-top: 2em;
     padding-bottom: 1em;
-
+    padding-top: 0.5em;
     & button{
       background-color: $red3;
       border: none;
