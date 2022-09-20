@@ -21,11 +21,11 @@ const Navbar = () => {
     setCurrent(routes[findIndexName(location.pathname)].name)
   },[location])
 
-  return (
+  return (  
     <div>
         <ul className={s.Navbar}>
           {routes.map((val, i) => (
-            <li style={{listStyleType: `${current===val.name ? "circle":"none"}`}} key={i}>
+            <li style={{listStyleType : `${current === val.name ? "circle" : "none"}`}} key={i}>
               <Link to={val.route}>{val.name}</Link>
             </li>
           ))}
