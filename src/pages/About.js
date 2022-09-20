@@ -1,8 +1,9 @@
 import React from 'react'
+import LoadingCircle from '../components/LoadingCircle'
 
 const About = () => {
   return (
-    <div>About</div>
+    <div><LoadingCircle></LoadingCircle></div>
   )
 }
 
