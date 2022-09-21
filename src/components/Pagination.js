@@ -3,7 +3,6 @@ import ProductCard from './ProductCard'
 import s from "../styles/Pagination.module.scss";
 import { useState } from 'react'
 import { useEffect } from 'react'
-import LoadingCircle from './LoadingCircle';
 
 const Pagination = ({arr,itens_number}) => {
   const [arrayItens, setArrayItens] = useState([]);
@@ -32,6 +31,7 @@ const Pagination = ({arr,itens_number}) => {
     setIsLoading(false);
   },[arr, itens_number])
   
+
   return (
     <div className={s.pagination}>
       <div className={s.pagesBar}>
@@ -48,8 +48,6 @@ const Pagination = ({arr,itens_number}) => {
               ))
             }
       </div>
-
-      {isLoading && <LoadingCircle></LoadingCircle>}
       
       {!isLoading && arrayItens[currentPage].map((page, i) => (
         <div className={s.container} key={`container_${i}`}>

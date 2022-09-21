@@ -12,7 +12,8 @@
       text-decoration: none;
       color: black;
       &:hover{
-        color: rgb(205, 219, 219);
+        color: $red3;
+        font-weight: bold;
       }      
     }
   }

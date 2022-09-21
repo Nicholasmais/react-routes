@@ -44,7 +44,7 @@ const Product = () => {
       }
       {
       !isLoading && product.length === 0 &&
-        <BoxMessage color="#FBCABE">
+        <BoxMessage color="#FBCABE" message={"Produto não encontrado :z"}>
         </BoxMessage>
       }
     </div>

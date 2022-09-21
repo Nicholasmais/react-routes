@@ -13,7 +13,7 @@ const Navbar = () => {
                   {route:"/news", name:"News"}]
 
   const findIndexName = (rota) => {
-    const index =  routes.map(obj => obj.route).indexOf(rota);
+    const index =  routes.map(obj => obj.route).indexOf(rota.slice(0,9) === "/product/" ? "/" : rota);
     return index;
   };
 

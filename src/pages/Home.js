@@ -6,18 +6,24 @@ import SelectFilter from '../components/SelectFilter';
 const Home = ({allProducts, allCategories}) => {
   const [products, setProducts] = useState(allProducts);
   const [filter, setFilter] = useState("");
-  const [itens_number, setItens_number] = useState(6);
-  const itensNumber = [1,2,3,4,5,6,7,8,9,10]
+
+  const initialItensNumber = window.innerWidth >= 480 ? 6 : 2
+  const itensNumber = [1,2,3,4,5,6,7,8,9,10];
+  const [itens_number, setItens_number] = useState(initialItensNumber);
+
   const changeFilter = (option) => {
     setFilter(option);
   }
 
   const changeItensNumber = (number) => {
-    setItens_number(number);
+    number ? setItens_number(number) : setItens_number(initialItensNumber) ;
   }
 
   useEffect(() => {
-    setProducts(allProducts.filter(obj => filter ? obj.category === filter : obj.category !== filter));
+    function fetchProducts(){
+      setProducts(allProducts.filter(obj => filter ? obj.category === filter : obj.category !== filter));
+      };
+    fetchProducts();
   }, [filter])
 
   return (
